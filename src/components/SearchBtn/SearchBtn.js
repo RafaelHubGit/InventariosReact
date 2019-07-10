@@ -39,7 +39,8 @@ class SearchBtn extends Component {
             <div className="container-fluid">
                  <ul class="collapsible">
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">search</i>Buscar . . .</div>
+                        <div class="collapsible-header">
+                            <i class="material-icons">search</i>Buscar . . .</div>
                         <div class="collapsible-body">
                         <input type="text" id="inptBusqueda"
                         placeholder="Buscar..." 

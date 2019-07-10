@@ -25,7 +25,7 @@ class floatingButton extends Component{
         return (
             <div className="fixed-action-btn">
                 <a class="btn-floating btn-large red">
-                    <i class="large material-icons">menu</i>
+                    <i class="large material-icons">add</i>
                 </a>
                 <ul>
                     <li>

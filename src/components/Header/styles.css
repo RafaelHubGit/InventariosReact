@@ -1,3 +1,15 @@
+nav {
+    background-color: #ffffff !important;
+}
+
+nav .brand-logo{
+    color: #5d5d5d;
+}
+
+nav a{
+    color: #5d5d5d;
+}
+
 .backGroundHeader{
     background: url('../../images/galaxy.jpg') fixed center ;
 }
@@ -13,3 +25,4 @@
     color: #fff;
     font-size: 35px;
 }
+
