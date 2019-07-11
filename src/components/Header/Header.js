@@ -29,17 +29,17 @@ class Header extends Component{
             <div className="">
                 <nav>
                     <div className="nav-wrapper">
-                    <a href="#!" className="brand-logo"><i className="material-icons">label</i>Proveedores</a>
+                    <a href="#!" className="brand-logo">Proveedores</a>
                     <a href="#" data-target="mobile-demo" className="sidenav-trigger">
                         <i className="material-icons">menu</i></a>
                     <ul className="right hide-on-med-and-down">
                         <li> 
-                            <a className="btn-floating blue tooltipped">
+                            <a className="btn-floating waves-effect black waves-light">
                                 <i className="material-icons">build</i>
                             </a>
                         </li>
-                        {/* <li><a href="badges.html">Components</a></li>
-                        <li><a href="collapsible.html">Javascript</a></li>
+                        {/* <li><a href="badges.html">Components</a></li> */}
+                        {/* <li><a href="collapsible.html">Javascript</a></li>
                         <li><a href="mobile.html">Mobile</a></li> */}
                     </ul>
                     </div>

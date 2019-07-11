@@ -1,0 +1,23 @@
+.modal-title{
+  height: 50px;
+  border-bottom: 1px solid rgb(92, 92, 92);
+  padding-left: 15px;
+  padding-right: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 23px;
+  
+}
+
+.modal-title button{
+  width: auto;
+  height: 25px;
+  background-color: rgba(255, 254, 254, 0.1);
+  /* background: #fff; */
+  /* opacity: .1; */
+  padding: 0px;
+  border: none;
+}

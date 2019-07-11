@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 // css
 import '../../../node_modules/materialize-css/dist/css/materialize.min.css'
 
@@ -7,6 +8,10 @@ import '../../../node_modules/materialize-css/dist/css/materialize.min.css'
 var M = require('../../../node_modules/materialize-css/dist/js/materialize');
 
 class floatingButton extends Component{
+
+    hola = ( ) => {
+        console.log("Hola");
+    }
 
     componentDidMount() {
         document.addEventListener('DOMContentLoaded', function() {
@@ -24,27 +29,30 @@ class floatingButton extends Component{
     render(){
         return (
             <div className="fixed-action-btn">
-                <a class="btn-floating btn-large red">
-                    <i class="large material-icons">add</i>
+                <a className="btn-floating btn-large red modal-trigger" href="#modal">
+                    <i className="large material-icons">add</i>
                 </a>
-                <ul>
+                <a className="btn-floating btn-large red">
+                    <i className="large material-icons">add</i>
+                </a>
+                {/* <ul>
                     <li>
-                        <a class="btn-floating blue tooltipped"
+                        <a className="btn-floating blue tooltipped"
                             data-position="left" 
                             data-tooltip="Nuevo">
-                            <i class="material-icons">add</i>
+                            <i className="material-icons">add</i>
                         </a>
                     </li>
                     <li>
-                        <a class="btn-floating yellow tooltipped"
+                        <a className="btn-floating yellow tooltipped"
                             data-position="left" 
                             data-tooltip="Configuración">
-                            <i class="material-icons">settings</i>
+                            <i className="material-icons">settings</i>
                         </a>
                     </li>
-                    <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-                    <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-                </ul>
+                    <li><a className="btn-floating green"><i className="material-icons">publish</i></a></li>
+                    <li><a className="btn-floating blue"><i className="material-icons">attach_file</i></a></li>
+                </ul> */}
             </div>
         )
     }

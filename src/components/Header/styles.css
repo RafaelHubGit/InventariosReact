@@ -1,5 +1,7 @@
 nav {
     background-color: #ffffff !important;
+    padding-left: 25px;
+    padding-right: 10px;
 }
 
 nav .brand-logo{

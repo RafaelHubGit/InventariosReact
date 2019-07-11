@@ -36,15 +36,17 @@ class SearchBtn extends Component {
 
     render(){
         return (
-            <div className="container-fluid">
-                 <ul class="collapsible">
+            <div className="">
+                 <ul className="collapsible">
                     <li>
-                        <div class="collapsible-header">
-                            <i class="material-icons">search</i>Buscar . . .</div>
-                        <div class="collapsible-body">
-                        <input type="text" id="inptBusqueda"
-                        placeholder="Buscar..." 
-                        title="Busqueda..." />
+                        <div className="collapsible-header">
+                            <i className="material-icons">search</i>Buscar . . .</div>
+                        <div className="collapsible-body">
+                            <div className="input-field">
+                                <i className="material-icons prefix">search</i>
+                                <input id="inptBusqueda" type="text" className="validate" />
+                                <label htmlFor="icon_prefix">Busqueda</label>
+                            </div>
                         </div>
                     </li>
                 </ul>
