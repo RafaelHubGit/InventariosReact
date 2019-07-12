@@ -42,10 +42,16 @@ class SearchBtn extends Component {
                         <div className="collapsible-header">
                             <i className="material-icons">search</i>Buscar . . .</div>
                         <div className="collapsible-body">
-                            <div className="input-field">
-                                <i className="material-icons prefix">search</i>
-                                <input id="inptBusqueda" type="text" className="validate" />
-                                <label htmlFor="icon_prefix">Busqueda</label>
+                            <div className="row">
+                                <div className="input-field col s12">
+                                    <i className="material-icons prefix">search</i>
+                                    <input id="inptBusqueda" 
+                                            name="inptBusqueda"
+                                            type="text" 
+                                            className="validate" 
+                                            autoComplete="off"/>
+                                    <label htmlFor="inptBusqueda">Busqueda</label>
+                                </div>
                             </div>
                         </div>
                     </li>

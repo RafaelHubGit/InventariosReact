@@ -4,6 +4,18 @@ import React, { Component } from 'react';
 // import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../../node_modules/materialize-css/dist/css/materialize.min.css'
 
+
+class BodyTable extends Component{
+    render(){
+        // console.log("hola si entra ", this.props.proveedor);
+        return(
+            <tr>
+                <td> {this.props.proveedor.nombre} </td>
+            </tr>
+        )
+    }
+}
+
 class table extends Component{
 
     render(){
@@ -12,20 +24,21 @@ class table extends Component{
                 <table id="tbale" className="highlight centered responsive-table">
                     <thead>
                     <tr>
-                        <th>Proveedores</th>
+                        <td>Proveedores</td>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <tr>
-                        <td>Alvin</td>
-                    </tr>
-                    <tr>
-                        <td>Alan</td>
-                    </tr>
-                    <tr>
-                        <td>Jonathan</td>
-                    </tr>
+                        {this.props.proveedores.map( proveedor => {
+                            console.log("Provider : ", proveedor);
+                            return(
+                                <BodyTable 
+                                    key ={ Math.random()}
+                                    proveedor = {proveedor}
+                                />
+                            )
+                                
+                        })}
                     </tbody>
                 </table>
             </div>

@@ -15,13 +15,28 @@ import Modal from '../../components/Modales/Modal';
 
 class Proveedores extends Component{
 
+    state={
+        proveedores: []
+    }
+
+    proveedores = datos => {
+
+        //Copia del estate actual
+        const proveedores = [...this.state.proveedores, datos]
+
+        //agregar el nuevo state 
+        this.setState({
+            proveedores
+        })
+    }
+
     render(){
         return(
             <div className="containerr">
                 <Header titulo="Proveedores"/>
                 <div className="container">
                     <SearchBtn />
-                    <Table />
+                    <Table proveedores={this.state.proveedores} />
                     {/* <FloatButton /> */}
 
                     <div className="fixed-action-btn">
@@ -31,7 +46,7 @@ class Proveedores extends Component{
                     </div>
 
                     <Modal titulo="Agrega Proveedor" >
-                        <BodyMProveedor />
+                        <BodyMProveedor proveedores={this.proveedores} />
                     </Modal>
                 </div>
                 
