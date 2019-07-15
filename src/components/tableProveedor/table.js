@@ -6,11 +6,23 @@ import '../../../node_modules/materialize-css/dist/css/materialize.min.css'
 
 
 class BodyTable extends Component{
+
+    handleClick = ( ev ) => {
+        this.props.sendInfoModal(ev.currentTarget.dataset.nombre, ev.currentTarget.dataset.idproveedor);
+    }
+
     render(){
-        // console.log("hola si entra ", this.props.proveedor);
+
         return(
-            <tr>
-                <td> {this.props.proveedor.nombre} </td>
+            
+            <tr onClick={this.handleClick} 
+                data-nombre={this.props.proveedor.nombre} 
+                data-idproveedor={this.props.proveedor._id}>
+                <td> 
+                    <a className="modal-trigger" href="#modal" >
+                        {this.props.proveedor.nombre}
+                    </a>
+                </td>
             </tr>
         )
     }
@@ -30,11 +42,11 @@ class table extends Component{
 
                     <tbody>
                         {this.props.proveedores.map( proveedor => {
-                            console.log("Provider : ", proveedor);
                             return(
                                 <BodyTable 
                                     key ={ Math.random()}
                                     proveedor = {proveedor}
+                                    sendInfoModal = {this.props.sendInfoModal}
                                 />
                             )
                                 

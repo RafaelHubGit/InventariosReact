@@ -16,17 +16,97 @@ import Modal from '../../components/Modales/Modal';
 class Proveedores extends Component{
 
     state={
-        proveedores: []
+        proveedores: [], 
+        proveedor: {
+            _id: '', 
+            nombre: ''
+        }
+    }
+
+    constructor(props){
+        super(props);
+        // console.log("Contructor : ", props);
+        // this.getProveedores();
+    }
+
+    componentDidMount(){
+        console.log("MOUNT");
+        this.getProveedores();
+
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        console.log("UPDATE ");
+        // this.getProveedores;
     }
 
     proveedores = datos => {
 
         //Copia del estate actual
-        const proveedores = [...this.state.proveedores, datos]
+        // const proveedores = [...this.state.proveedores, datos]
+
+        console.log("datos Prov : ", datos);
+
+        //Aqui se tiene que insertar elproducto en BD
+        this.insertProveedor(datos.nombre);
+
+        //Aqui se actualiza el state 
+        // this.getProveedores();
+
+        //Este no es mecesario pero de momento se deja para que pinte la informacion 
+        //agregar el nuevo state 
+        // this.setState({
+        //     proveedores
+        // })
+    }
+
+    
+
+
+    getProveedores = async () => {
+
+        const response = await fetch(`${process.env.REACT_APP_URL}/services/proveedor`, {
+            method: "GET"
+        });
+
+        const data = await response.json();
+
+        this.setState({
+            proveedores: data.proveedor
+        });
+
+    }
+
+    insertProveedor = async ( nombre ) => {
+
+        const response = await fetch(`${process.env.REACT_APP_URL}/services/proveedor`,{
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify({nombre: nombre})
+        });
+
+        const data = await response.json();
+
+        //Copia del estate actual
+        const proveedores = [...this.state.proveedores, data.proveedor]
 
         //agregar el nuevo state 
         this.setState({
             proveedores
+        });
+
+    }
+
+    sendInfoModal = ( nombre, id ) => {
+        console.log("CLICK : ", nombre, id);
+        this.setState({
+            proveedor:{
+                _id: id, 
+                nombre: nombre
+            }
         })
     }
 
@@ -34,9 +114,9 @@ class Proveedores extends Component{
         return(
             <div className="containerr">
                 <Header titulo="Proveedores"/>
-                <div className="container">
+                <div className="container">                    
                     <SearchBtn />
-                    <Table proveedores={this.state.proveedores} />
+                    <Table proveedores={this.state.proveedores} sendInfoModal={this.sendInfoModal} />
                     {/* <FloatButton /> */}
 
                     <div className="fixed-action-btn">
@@ -46,7 +126,7 @@ class Proveedores extends Component{
                     </div>
 
                     <Modal titulo="Agrega Proveedor" >
-                        <BodyMProveedor proveedores={this.proveedores} />
+                        <BodyMProveedor proveedores={this.proveedores} proveedor={this.state.proveedor}/>
                     </Modal>
                 </div>
                 

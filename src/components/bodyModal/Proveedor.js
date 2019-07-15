@@ -6,6 +6,7 @@ const Swal = require('../../../node_modules/sweetalert2/dist/sweetalert2.all.min
 
 const stateInicial = {
     proveedor: {
+        _id:'',
         nombre : ''
     }, 
     error: true
@@ -13,6 +14,34 @@ const stateInicial = {
 
 class Proveedor extends Component{
     state= { ...stateInicial };
+
+    constructor(props){
+        super(props)
+
+        console.log("1: COMPONENT");
+    }      
+
+    componentDidUpdate(){
+        
+        console.log("2 : UPDATE");
+    }
+
+    componentDidMount(){
+
+        console.log("3: DIDMOUNT");
+
+        // this.setState({
+        //     proveedor:{
+        //         _id: this.props.proveedor._id, 
+        //         nombre: this.props.proveedor.nombre
+        //     }
+        // })
+        
+    }
+
+    componentDidUnmount(){
+        console.log("4: componentDidUnmount");
+    }
 
     //Levantamiento del STATE
     handleChange  = e =>{
@@ -82,6 +111,7 @@ class Proveedor extends Component{
     }
 
     render(){
+        
         return(
             <div>
                 {/* <form onSubmit={this.handleSubmit} > */}
