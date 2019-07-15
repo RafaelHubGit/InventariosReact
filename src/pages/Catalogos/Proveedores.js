@@ -7,7 +7,7 @@ import FloatButton from '../../components/floatingButton/floatingButton';
 import SearchBtn from '../../components/SearchBtn/SearchBtn';
 import BodyMProveedor from '../../components/bodyModal/Proveedor';
 
-import Modal from '../../components/Modales/Modal';
+import Modal from '../../components/Modales/Modal2';
 
 // css
 // import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -20,7 +20,8 @@ class Proveedores extends Component{
         proveedor: {
             _id: '', 
             nombre: ''
-        }
+        }, 
+        modalIsOpen: false
     }
 
     constructor(props){
@@ -110,6 +111,14 @@ class Proveedores extends Component{
         })
     }
 
+    openModal = e => {
+        this.setState({ modalIsOpen: true});
+    }
+
+    closeModal = e => {
+        this.setState({ modalIsOpen: false});
+    }
+
     render(){
         return(
             <div className="containerr">
@@ -120,14 +129,19 @@ class Proveedores extends Component{
                     {/* <FloatButton /> */}
 
                     <div className="fixed-action-btn">
-                        <a className="btn-floating btn-large red modal-trigger" href="#modal">
+                        <a className="btn-floating btn-large red modal-trigger" href="#modal"
+                            onClick={this.openModal}>
                             <i className="large material-icons">add</i>
                         </a>
                     </div>
 
-                    <Modal titulo="Agrega Proveedor" >
+                    <Modal isOpen={this.state.modalIsOpen} onClose={this.closeModal} titulo={"Titulo"}>
                         <BodyMProveedor proveedores={this.proveedores} proveedor={this.state.proveedor}/>
                     </Modal>
+
+                    {/* <Modal titulo="Agrega Proveedor" >
+                        <BodyMProveedor proveedores={this.proveedores} proveedor={this.state.proveedor}/>
+                    </Modal> */}
                 </div>
                 
             </div>            

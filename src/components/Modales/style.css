@@ -1,4 +1,56 @@
-.modal-title{
+
+.Modal-overlay{
+  display: flex;
+  align-items: center;
+
+  position: fixed;
+  z-index: 999;
+  top: -25%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 125%;
+  width: 100%;
+  background-color:rgba(0, 0, 0, 0.5);
+  /* background: #000; */
+  /* display: none; */
+  will-change: opacity;
+}
+
+.Modal {
+  /* display: none; */
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: #fafafa;
+  padding: 0;
+  max-height: 70%;
+  width: 55%;
+  margin: auto;
+  overflow-y: auto;
+  border-radius: 2px;
+  will-change: top, opacity;
+}
+
+.Modal:focus {
+  outline: none;
+}
+
+@media only screen and (max-width: 992px) {
+  .Modal {
+    width: 80%;
+  }
+}
+
+.Modal h1, .Modal h2, .Modal h3, .Modal h4 {
+  margin-top: 0;
+}
+
+.Modal .Modal-content {
+  padding: 24px;
+}
+
+.Modal-title{
   height: 50px;
   border-bottom: 1px solid rgb(92, 92, 92);
   padding-left: 15px;
@@ -12,12 +64,73 @@
   
 }
 
-.modal-title button{
+.Modal-title button{
   width: auto;
   height: 25px;
   background-color: rgba(255, 254, 254, 0.1);
-  /* background: #fff; */
-  /* opacity: .1; */
   padding: 0px;
   border: none;
+}
+
+.Modal .Modal-close {
+  cursor: pointer;
+}
+
+.Modal .Modal-footer {
+  border-radius: 0 0 2px 2px;
+  background-color: #fafafa;
+  padding: 4px 6px;
+  height: 56px;
+  width: 100%;
+  text-align: right;
+}
+
+.Modal .Modal-footer .btn, .Modal .Modal-footer .btn-large, .Modal .Modal-footer .btn-small, .Modal .Modal-footer .btn-flat {
+  margin: 6px 0;
+}
+
+.Modal.Modal-fixed-footer {
+  padding: 0;
+  height: 70%;
+}
+
+.Modal.Modal-fixed-footer .Modal-content {
+  position: absolute;
+  height: calc(100% - 56px);
+  max-height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.Modal.Modal-fixed-footer .Modal-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 0;
+}
+
+.Modal.bottom-sheet {
+  top: auto;
+  bottom: -100%;
+  margin: 0;
+  width: 100%;
+  max-height: 45%;
+  border-radius: 0;
+  will-change: bottom, opacity;
+}
+
+.Modal__container {
+  position: relative;
+  top: 10rem;
+  background-color: #ffffff;
+  padding: 1rem;
+  width: 400px;
+}
+
+.Modal__close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  background-color: #F5F5F5;
+  padding: 0.5rem 1rem;
 }
