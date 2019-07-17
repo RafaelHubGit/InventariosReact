@@ -16,12 +16,12 @@ class floatingButton extends Component{
     componentDidMount() {
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.fixed-action-btn');
-            var instances = M.FloatingActionButton.init(elems, {
+            M.FloatingActionButton.init(elems, {
                 direction: 'top'
             });
 
             var elemsT = document.querySelectorAll('.tooltipped');
-            var instances = M.Tooltip.init(elemsT);
+            M.Tooltip.init(elemsT);
 
         });
     }

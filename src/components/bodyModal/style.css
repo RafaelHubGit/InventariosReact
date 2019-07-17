@@ -1,0 +1,21 @@
+.hide{
+    display: none;
+}
+
+.buttonBar{
+    display: flex;
+    height: 45px;
+}
+
+.buttonBar .right{
+    justify-content: end;
+}
+
+.buttonBar .left{
+    justify-content: start;
+}
+
+.buttonBar button{
+    margin-right: 3px;
+    margin-left: 3px;
+}

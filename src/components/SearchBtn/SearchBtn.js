@@ -19,7 +19,7 @@ class SearchBtn extends Component {
     componentDidMount(){
         
         var elems = document.querySelectorAll('.collapsible');
-        var instances = M.Collapsible.init(elems);
+        M.Collapsible.init(elems);
 
 
         $("#inptBusqueda").keyup(function(){
