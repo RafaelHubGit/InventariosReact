@@ -2,58 +2,48 @@ import React, { Component } from 'react';
 
 // componentes
 import Header from '../../components/Header/Header';
-import Table from '../../components/Tables/tableProveedores';
+import Table from '../../components/Tables/tableCategorias';
 import SearchBtn from '../../components/SearchBtn/SearchBtn';
-import BodyMProveedor from '../../components/bodyModal/Proveedor';
+import BodyMCategoria from '../../components/bodyModal/Categoria';
 
 import Modal from '../../components/Modales/Modal2';
 
 //Importando SweetAlert2
 import '../../../node_modules/sweetalert2/dist/sweetalert2.min.css';
-const Swal = require('../../../node_modules/sweetalert2/dist/sweetalert2.all.min.js');
+const Swal = require('sweetalert2/dist/sweetalert2.all.min');
 
 // css
 // import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 // import '../../../node_modules/materialize-css/dist/css/materialize.min.css'
 
-class Proveedores extends Component{
+class Categorias extends Component{
 
     state={
-        proveedores: [], 
-        proveedor: {
+        categorias: [], 
+        categoria: {
             _id: '', 
-            nombre: '', 
+            nombre: '',
+            descripcion: '',
             edit: false
         }, 
         modalIsOpen: false
     }
 
-    constructor(props){
-        super(props);
-        // console.log("Contructor : ", props);
-        // this.getProveedores();
-    }
-
     componentDidMount(){
         console.log("MOUNT");
-        this.getProveedores();
+        this.getCategorias();
 
     }
-
-    componentDidUpdate(prevProps, prevState){
-        console.log("UPDATE ");
-        // this.getProveedores;
-    }
-
+  
     handleInsert = async ( datos ) => {
 
-        const response = await fetch(`${process.env.REACT_APP_URL}/services/proveedor`,{
+        const response = await fetch(`${process.env.REACT_APP_URL}/services/categoria`,{
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             method: "POST",
-            body: JSON.stringify({nombre: datos.nombre})
+            body: JSON.stringify({nombre: datos.nombre, descripcion: datos.descripcion})
         });
 
         const data = await response.json();
@@ -68,11 +58,11 @@ class Proveedores extends Component{
         }
 
         //Copia del estate actual
-        const proveedores = [...this.state.proveedores, data.proveedor]
+        const categorias = [...this.state.categorias, data.categoria]
 
         //agregar el nuevo state 
         this.setState({
-            proveedores, 
+            categorias, 
             modalIsOpen: false
         });
 
@@ -85,13 +75,13 @@ class Proveedores extends Component{
 
     handleEdit = async ( datos ) => {
 
-        const response = await fetch(`${process.env.REACT_APP_URL}/services/proveedor/${datos._id}`,{
+        const response = await fetch(`${process.env.REACT_APP_URL}/services/categoria/${datos._id}`,{
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             method: "PUT",
-            body: JSON.stringify({nombre: datos.nombre})
+            body: JSON.stringify({nombre: datos.nombre, descripcion: datos.descripcion})
         });
 
         const data = await response.json();
@@ -107,17 +97,19 @@ class Proveedores extends Component{
 
 
         // Busca y edita la infomacion en el state
-        const proveedores = [...this.state.proveedores];
+        const categorias = [...this.state.categorias];
 
-        let dataPosition = proveedores.findIndex(proveedor => proveedor._id === datos._id); 
+        let dataPosition = categorias.findIndex(categoria => categoria._id === datos._id); 
 
-        proveedores[dataPosition].nombre = datos.nombre;
+        categorias[dataPosition].nombre = datos.nombre;
+        categorias[dataPosition].descripcion = datos.descripcion;
 
         this.setState({
-            proveedores, 
-            proveedor: {
+            categorias, 
+            categoria: {
                 _id: '', 
-                nombre: '', 
+                nombre: '',
+                descripcion: '',
                 edit: false
             }, 
             modalIsOpen: false
@@ -131,7 +123,7 @@ class Proveedores extends Component{
     }
 
     handleDelete = async( datos ) => {
-        const response = await fetch(`${process.env.REACT_APP_URL}/services/proveedor/${datos._id}`,{
+        const response = await fetch(`${process.env.REACT_APP_URL}/services/categoria/${datos._id}`,{
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -151,17 +143,18 @@ class Proveedores extends Component{
         }
 
         // Busca y elimina la informacion en el state
-        const proveedoresActuales = [...this.state.proveedores];
+        const categoriaActuales = [...this.state.categorias];
 
-        const proveedores = proveedoresActuales.filter(proveedor => proveedor._id !== datos._id); 
+        const categorias = categoriaActuales.filter(categoria => categoria._id !== datos._id); 
 
         this.setState({
-            proveedores, 
-            proveedor: {
+            categorias, 
+            categoria: {
                 _id: '', 
-                nombre: '', 
+                nombre: '',
+                descripcion: '',
                 edit: false
-            }, 
+            },
             modalIsOpen: false
         })
 
@@ -175,29 +168,32 @@ class Proveedores extends Component{
     
 
 
-    getProveedores = async () => {
+    getCategorias = async () => {
 
-        const response = await fetch(`${process.env.REACT_APP_URL}/services/proveedor`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/services/categoria`, {
             method: "GET"
         });
 
         const data = await response.json();
 
+        console.log("CATEGORIAS : ",data );
+
         this.setState({
-            proveedores: data.proveedor
+            categorias: data.categoria
         });
 
     }
 
     
 
-    sendInfoModal = ( nombre, id ) => {
+    sendInfoModal = ( nombre, id, descripcion ) => {
         this.openModal();
         console.log("CLICK : ", nombre, id);
         this.setState({
-            proveedor:{
+            categoria:{
                 _id: id, 
-                nombre: nombre, 
+                nombre: nombre,
+                descripcion: descripcion,
                 edit: true
             }
         })
@@ -214,10 +210,10 @@ class Proveedores extends Component{
     render(){
         return(
             <div className="containerr">
-                <Header titulo="Proveedores"/>
-                <div className="container">                    
-                    <SearchBtn idTabla={"tbale"}/>
-                    <Table proveedores={this.state.proveedores} sendInfoModal={this.sendInfoModal} />
+                <Header titulo="Categorias"/>
+                <div className="container">
+                    <SearchBtn idTabla={"tableCategoria"} />
+                    <Table categorias={this.state.categorias} sendInfoModal={this.sendInfoModal} />
                     {/* <FloatButton /> */}
 
                     <div className="fixed-action-btn">
@@ -228,14 +224,14 @@ class Proveedores extends Component{
                     </div>
 
                     <Modal isOpen={this.state.modalIsOpen} onClose={this.closeModal} titulo={"Titulo"}>
-                        <BodyMProveedor handleInsert={this.handleInsert} 
+                        <BodyMCategoria handleInsert={this.handleInsert} 
                                         handleEdit={this.handleEdit} 
                                         handleDelete={this.handleDelete}
-                                        proveedor={this.state.proveedor}/>
+                                        categoria={this.state.categoria}/>
                     </Modal>
 
-                    {/* <Modal titulo="Agrega Proveedor" >
-                        <BodyMProveedor proveedores={this.proveedores} proveedor={this.state.proveedor}/>
+                    {/* <Modal titulo="Agrega categoria" >
+                        <BodyMCategoria categoria={this.categoria} categoria={this.state.categoria}/>
                     </Modal> */}
                 </div>
                 
@@ -245,4 +241,4 @@ class Proveedores extends Component{
 
 };
 
-export default Proveedores;
+export default Categorias;

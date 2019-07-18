@@ -17,14 +17,14 @@ var $ = require('jquery');
 class SearchBtn extends Component {
 
     componentDidMount(){
+        let idTabla = this.props.idTabla;
         
         var elems = document.querySelectorAll('.collapsible');
         M.Collapsible.init(elems);
 
-
         $("#inptBusqueda").keyup(function(){
             let _this = this;
-            $.each($("#tbale tbody tr"), function() {
+            $.each($(`#${idTabla} tbody tr`), function() {
             if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
             $(this).hide();
             else
