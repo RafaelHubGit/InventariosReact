@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // componentes
-import Header from '../../components/Header/Header';
+// import Header from '../../components/Header/Header';
 import Table from '../../components/Tables/tableProductos';
 import SearchBtn from '../../components/SearchBtn/SearchBtn';
 import BodyMproducto from '../../components/bodyModal/Producto';
@@ -234,7 +234,7 @@ class Productos extends Component{
     render(){
         return(
             <div className="containerr">
-                <Header titulo="Productos"/>
+                {/* <Header titulo="Productos"/> */}
                 <div className="container">
                     <SearchBtn idTabla={"tableProducto"} />
                     <Table productos={this.state.productos} sendInfoModal={this.sendInfoModal} />

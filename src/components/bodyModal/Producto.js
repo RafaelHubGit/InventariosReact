@@ -40,8 +40,6 @@ class Producto extends Component{
 
     componentDidMount(){
 
-        console.log("3: DIDMOUNT :)) : ");
-
         this.setState({
             producto: {
                 _id: '', 
@@ -153,8 +151,6 @@ class Producto extends Component{
 
         const data = await response.json();
 
-        console.log("INFOR PROVEEDORES : ", data.proveedor);
-
         this.setState({
             proveedores: data.proveedor
         });
@@ -163,15 +159,8 @@ class Producto extends Component{
 
     render(){
 
-        let options = this.state.proveedores.map ((proveedor) => 
-            <option key={proveedor._id} value={proveedor._id}> {proveedor.nombre}</option>
-        );
-
-        console.log("LA OPCION ES ", this.state.proveedores);
-        
         return(
             <div>
-                {/* <form onSubmit={this.handleSubmit} > */}
                 <div className="row">
                     <form  className="col s12 m12">
                         <div className="row">
@@ -259,18 +248,9 @@ class Producto extends Component{
                                 >
                                     <option value="" disabled>Elige una opción</option>
                                     {this.state.proveedores.map ((proveedor) => {
-                                        console.log("Si los recore");
                                         return (<option key={proveedor._id} value={proveedor._id}> {proveedor.nombre}</option>)}
                                     )}
                                     
-                                    {/* {this.state.proveedores.map( proveedor =>{
-                                        return(
-                                            <optionproveedor 
-                                                key ={ Math.random()}
-                                                proveedor= {proveedor}
-                                            />
-                                        )
-                                    })} */}
                                 </select>
                                 <label>Proveedor</label>
                             </div>
@@ -296,23 +276,11 @@ class Producto extends Component{
                         <i className="material-icons left">delete</i>
                         Eliminar
                     </button>
-                </div>                
-                
-
-                
+                </div>
             </div>
         )
     }
 
-}
-
-
-class optionproveedor extends Component {
-    render(){
-        return(
-            <option value="" >Hola que hace</option>
-        )
-    }
 }
 
 export default Producto;

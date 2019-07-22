@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // componentes
-import Header from '../../components/Header/Header';
+// import Header from '../../components/Header/Header';
 import Table from '../../components/Tables/tableCategorias';
 import SearchBtn from '../../components/SearchBtn/SearchBtn';
 import BodyMCategoria from '../../components/bodyModal/Categoria';
@@ -210,7 +210,7 @@ class Categorias extends Component{
     render(){
         return(
             <div className="containerr">
-                <Header titulo="Categorias"/>
+                {/* <Header titulo="Categorias"/> */}
                 <div className="container">
                     <SearchBtn idTabla={"tableCategoria"} />
                     <Table categorias={this.state.categorias} sendInfoModal={this.sendInfoModal} />

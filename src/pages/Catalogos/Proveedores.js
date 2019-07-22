@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // componentes
-import Header from '../../components/Header/Header';
+// import Header from '../../components/Header/Header';
 import Table from '../../components/Tables/tableProveedores';
 import SearchBtn from '../../components/SearchBtn/SearchBtn';
 import BodyMProveedor from '../../components/bodyModal/Proveedor';
@@ -214,7 +214,7 @@ class Proveedores extends Component{
     render(){
         return(
             <div className="containerr">
-                <Header titulo="Proveedores"/>
+                {/* <Header titulo="Proveedores"/> */}
                 <div className="container">                    
                     <SearchBtn idTabla={"tbale"}/>
                     <Table proveedores={this.state.proveedores} sendInfoModal={this.sendInfoModal} />
