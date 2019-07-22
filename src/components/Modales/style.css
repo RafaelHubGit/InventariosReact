@@ -9,7 +9,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  height: 125%;
+  height: 150%;
   width: 100%;
   background-color:rgba(0, 0, 0, 0.5);
   /* background: #000; */
@@ -30,6 +30,21 @@
   overflow-y: auto;
   border-radius: 2px;
   will-change: top, opacity;
+}
+
+.Modal-lg{
+  max-height: 90%;
+  width: 90%;
+}
+
+.Modal-md{
+  max-height: 70%;
+  width: 55%;
+}
+
+.Modal-sm{
+  max-height: 50%;
+  width: 35%;
 }
 
 .Modal:focus {

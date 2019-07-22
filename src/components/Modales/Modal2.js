@@ -16,7 +16,7 @@ function Modal2 (props){
 
     return ReactDOM.createPortal(
         <div className="Modal-overlay">
-            <div id="" className="Modal">
+            <div id="" className="Modal Modal-lg">
                 <div className="Modal-title">
                     <div>{props.titulo}</div>
                     <button className="Modal-close"
@@ -29,17 +29,8 @@ function Modal2 (props){
                 <div className="Modal-content">
                     {props.children}
                 </div>
-                {/* <div className="modal-footer">
-                    <a href="#!" className="modal-close waves-effect waves-green btn-flat">Agree</a>
-                </div> */}
             </div>
         </div>,
-        // <div className="Modal">
-        //     <div class="Modal__container">
-        //     <h4>Modal Header</h4>
-        //      <p>A bunch of text</p>
-        //     </div>
-        // </div>,
             document.getElementById('modal')
     )
 

@@ -6,6 +6,8 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 // Pages
 import Proveedores from '../pages/Catalogos/Proveedores';
 import Categorias from '../pages/Catalogos/Categorias';
+import Productos from '../pages/Catalogos/Productos';
+
 
 function App() {
 
@@ -14,6 +16,7 @@ function App() {
       <Switch>
         <Route exact path="/Catalogos/Proveedores" component={Proveedores} />
         <Route exact path="/Catalogos/Categorias" component={Categorias} />
+        <Route exact path="/Catalogos/Productos" component={Productos} />
       </Switch>
     </Router>
   );
