@@ -7,9 +7,11 @@ import '../../../node_modules/materialize-css/dist/css/materialize.min.css';
 import './styles.css';
 
 var userImg = require('../../images/yuna.jpg');
+var officeImg = require('../../images/office.jpeg');
 // js
 // import '../../../node_modules/bootstrap/dist/js/bootstrap';
 var M = require('../../../node_modules/materialize-css/dist/js/materialize');
+
 
 
 class Header extends Component{
@@ -21,7 +23,7 @@ class Header extends Component{
         // Inicializa el SLIDENAV
         var options = {
             edge: 'left',
-            closeOnClick: true
+            closeOnClick: false
         }
         var elems = document.querySelectorAll('.sidenav');
         M.Sidenav.init(elems, options);
@@ -37,12 +39,6 @@ class Header extends Component{
         })
     }
 
-    closeNavBar = () => {
-        var elems = document.querySelectorAll('.sidenav');
-        var instance = M.Dropdown.getInstance(elems);
-        // instance.close();
-    }
-
     render(){
         return(
 
@@ -50,8 +46,10 @@ class Header extends Component{
                 <nav className="cyan darken-4">
                     <div className="nav-wrapper">
                     <a href="#!" className="brand-logo">{this.state.titulo}</a>
-                    <a href="#" data-target="mobile-demo" className="sidenav-trigger">
-                        <i className="material-icons">menu</i></a>
+                    <a href="#" data-target="slide-out" className="sidenav-trigger">
+                        <i className="material-icons">menu</i>
+                    </a>
+
                     <ul className="right hide-on-med-and-down">
                         {/* <li><a href="collapsible.html">Javascript</a></li>
                         <li><a href="mobile.html">Mobile</a></li> */}
@@ -80,13 +78,29 @@ class Header extends Component{
                 </ul>
 
                 {/* Es la informacion que se muestra en el menu con dispositivo mobil */}
-                <ul id="mobile-demo" className="sidenav" >
+                {/* <ul id="mobile-demo" className="sidenav" >
                     <li><Link to="/Catalogos/Categorias" onClick={() => {this.changeTitutlo("Categorías"); this.closeNavBar()}}>Categorías</Link></li>
                     <li><Link to="/Catalogos/Productos" onClick={() => this.closeNavBar()}>Productos</Link></li>
                     <li><Link to="/Catalogos/Proveedores" onClick={() => this.changeTitutlo("Proveedores")}>Proveedores</Link></li>
-                    {/* <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">Javascript</a></li>
-                    <li><a href="mobile.html">Mobile</a></li> */}
+                </ul> */}
+                <ul id="slide-out" className="sidenav">
+                    <li>
+                        <div className="user-view">
+                            <div className="background">
+                                <img src={officeImg}/>
+                            </div>
+                            <a href="#user"><img className="circle" src={userImg}/></a>
+                            <a href="#name"><span className="white-text name">John Doe</span></a>
+                            <a href="#email"><span className="white-text email">jdandturk@gmail.com</span></a>
+                        </div>
+                    </li>
+                    {/* <li><a href="#!"><i className="material-icons">cloud</i>First Link With Icon</a></li>
+                    <li><a href="#!">Second Link</a></li> */}
+                    <li><div className="divider"></div></li>
+                    <li><a className="subheader">Catálogos</a></li>
+                    <li><Link to="/Catalogos/Categorias" className="sidenav-close" onClick={() => {this.changeTitutlo("Categorías")}}>Categorías</Link></li>
+                    <li><Link to="/Catalogos/Productos" className="sidenav-close" onClick={() => this.changeTitutlo("Productos")}>Productos</Link></li>
+                    <li><Link to="/Catalogos/Proveedores" className="sidenav-close" onClick={() => this.changeTitutlo("Proveedores")}>Proveedores</Link></li>
                 </ul>
             </div>
             
