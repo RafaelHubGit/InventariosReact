@@ -213,9 +213,9 @@ class Proveedores extends Component{
 
     render(){
         return(
-            <div className="containerr">
+            <div className="container-fluid">
                 {/* <Header titulo="Proveedores"/> */}
-                <div className="container">                    
+                <div className="">                    
                     <SearchBtn idTabla={"tbale"}/>
                     <Table proveedores={this.state.proveedores} sendInfoModal={this.sendInfoModal} />
                     {/* <FloatButton /> */}

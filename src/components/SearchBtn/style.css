@@ -10,3 +10,51 @@
     border-radius: 50px;
     margin-bottom: 12px; */
 }
+
+.search {
+  width: 95%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100% !important;
+  border: 1px solid rgb(194, 193, 193) !important;
+  border-right: none !important;
+  padding: 5px !important;
+  height: 30px !important;
+  /* border-radius: 5px 0 0 5px !important; */
+  border-radius: 24px 0px 0px 24px !important;
+  outline: none !important;
+  color: #9DBFAF !important;
+}
+
+.searchTerm:focus{
+  color: rgb(12, 12, 12);
+}
+
+.searchButton {
+  width: 40px;
+  height: 42px;
+  border: 1px solid #00B4CC;
+  background: rgb(69, 137, 224);
+  text-align: center;
+  color: #fff;
+  border-radius: 0px 24px 24px 0px !important;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  margin-top: 15px;
+
+  /* position: absolute;
+  top: 50%;
+  left: 50%; */
+  /* transform: translate(-50%, -50%); */
+}

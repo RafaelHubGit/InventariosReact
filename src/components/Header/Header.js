@@ -43,7 +43,7 @@ class Header extends Component{
         return(
 
             <div className="">
-                <nav className="cyan darken-4">
+                <nav className="white">
                     <div className="nav-wrapper">
                     <a href="#!" className="brand-logo">{this.state.titulo}</a>
                     <a href="#" data-target="slide-out" className="sidenav-trigger">
@@ -61,7 +61,6 @@ class Header extends Component{
                         </li>
                         <li> 
                             <a className="btn-floating waves-effect black waves-light">
-                                {/* <i className="material-icons">build</i> */}
                                 <img className="circle responsive-img" src={userImg}></img>
                             </a>
                         </li>

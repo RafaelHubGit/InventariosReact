@@ -29,10 +29,7 @@ class floatingButton extends Component{
     render(){
         return (
             <div className="fixed-action-btn">
-                <a className="btn-floating btn-large red modal-trigger" href="#modal">
-                    <i className="large material-icons">add</i>
-                </a>
-                <a className="btn-floating btn-large red">
+                <a className="btn-floating btn-large red darken-2 modal-trigger" href="#modal">
                     <i className="large material-icons">add</i>
                 </a>
                 {/* <ul>

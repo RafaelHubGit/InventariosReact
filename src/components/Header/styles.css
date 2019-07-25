@@ -2,14 +2,22 @@ nav {
     background-color: #ffffff !important;
     padding-left: 25px;
     padding-right: 10px;
+
+    box-shadow: none;
 }
 
+
+
 nav .brand-logo{
-    color: #ffffff;
+    color: #5B5B5B;
 }
 
 nav a{
-    color: #ffffff;
+    color: #5B5B5B;
+}
+
+nav ul a{
+    color: #5B5B5B;
 }
 
 .backGroundHeader{
@@ -28,3 +36,10 @@ nav a{
     font-size: 35px;
 }
 
+
+@media screen and (max-width: 990px) {
+    nav {
+        padding-left: 1px !important;
+        /* padding-right: 10px; */
+    }
+}

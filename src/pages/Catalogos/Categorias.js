@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 
+// css
+import '../style.css';
+// import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+// import '../../../node_modules/materialize-css/dist/css/materialize.min.css'
+
 // componentes
 // import Header from '../../components/Header/Header';
 import Table from '../../components/Tables/tableCategorias';
 import SearchBtn from '../../components/SearchBtn/SearchBtn';
 import BodyMCategoria from '../../components/bodyModal/Categoria';
+import FloatButton from '../../components/floatingButton/floatingButton';
 
 import Modal from '../../components/Modales/Modal2';
 
@@ -12,9 +18,7 @@ import Modal from '../../components/Modales/Modal2';
 import '../../../node_modules/sweetalert2/dist/sweetalert2.min.css';
 const Swal = require('sweetalert2/dist/sweetalert2.all.min');
 
-// css
-// import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-// import '../../../node_modules/materialize-css/dist/css/materialize.min.css'
+
 
 class Categorias extends Component{
 
@@ -30,7 +34,7 @@ class Categorias extends Component{
     }
 
     componentDidMount(){
-        console.log("MOUNT");
+        console.log("MOUNT URL : ", process.env.REACT_APP_URL);
         this.getCategorias();
 
     }
@@ -170,7 +174,14 @@ class Categorias extends Component{
 
     getCategorias = async () => {
 
+        console.log("URL : ", process.env.REACT_APP_URL);
+
         const response = await fetch(`${process.env.REACT_APP_URL}/services/categoria`, {
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
             method: "GET"
         });
 
@@ -209,9 +220,9 @@ class Categorias extends Component{
 
     render(){
         return(
-            <div className="containerr">
+            <div className="container-fluid">
                 {/* <Header titulo="Categorias"/> */}
-                <div className="container">
+                <div className="">
                     <SearchBtn idTabla={"tableCategoria"} />
                     <Table categorias={this.state.categorias} sendInfoModal={this.sendInfoModal} />
                     {/* <FloatButton /> */}

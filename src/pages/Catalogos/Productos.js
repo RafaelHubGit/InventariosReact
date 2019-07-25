@@ -233,9 +233,9 @@ class Productos extends Component{
 
     render(){
         return(
-            <div className="containerr">
+            <div className="container-fluid">
                 {/* <Header titulo="Productos"/> */}
-                <div className="container">
+                <div className="">
                     <SearchBtn idTabla={"tableProducto"} />
                     <Table productos={this.state.productos} sendInfoModal={this.sendInfoModal} />
                     {/* <FloatButton /> */}

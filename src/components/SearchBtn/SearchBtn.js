@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 
 // css
-import '../../../node_modules/materialize-css/dist/css/materialize.min.css'
+// import '../../../node_modules/materialize-css/dist/css/materialize.min.css'
 import './style.css';
 
 // js
@@ -37,7 +37,19 @@ class SearchBtn extends Component {
     render(){
         return (
             <div className="">
-                 <ul className="collapsible">
+                <div className="wrap">
+                    <div className="search">
+                        <input id="inptBusqueda" 
+                                name="inptBusqueda"
+                                type="text" className="searchTerm" 
+                                autoComplete="off"
+                                placeholder="Qué estas buscando?" />
+                        <button type="submit" className="searchButton">
+                            <i className="material-icons">search</i>
+                        </button>
+                    </div>
+                </div>
+                 {/* <ul className="collapsible">
                     <li>
                         <div className="collapsible-header">
                             <i className="material-icons">search</i>Buscar . . .</div>
@@ -55,7 +67,7 @@ class SearchBtn extends Component {
                             </div>
                         </div>
                     </li>
-                </ul>
+                </ul> */}
             </div>
         )
     }
